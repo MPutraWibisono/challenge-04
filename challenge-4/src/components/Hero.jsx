@@ -57,7 +57,7 @@ const Hero = () => {
               className=""
             />
             <div className="judul">
-              <h1 className="pb-3">{movie?.original_title}</h1>
+              <h1 className="pb-3">{movie?.title}</h1>
               <p className="pb-2">{movie?.overview}</p>
               <WatchTrailer id={movie?.id} />
             </div>

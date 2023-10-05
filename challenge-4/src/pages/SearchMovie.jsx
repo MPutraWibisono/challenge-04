@@ -80,7 +80,7 @@ const SearchMovies = () => {
           <Col md={3} className="pb-5" key={list?.id}>
             <MovieItems
               id={list?.id}
-              title={list?.original_title}
+              title={list?.title}
               overview={list?.overview}
               imageURL={import.meta.env.VITE_API_IMAGE_URL + list?.poster_path}
             />

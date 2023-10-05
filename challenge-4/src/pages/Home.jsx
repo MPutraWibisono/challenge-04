@@ -107,7 +107,7 @@ const Home = () => {
             <Col md={3} className="pb-5" key={popular?.id}>
               <MovieItems
                 id={popular?.id}
-                title={popular?.original_title}
+                title={popular?.title}
                 overview={popular?.overview}
                 imageURL={
                   import.meta.env.VITE_API_IMAGE_URL + popular?.poster_path

@@ -87,7 +87,7 @@ export const DetailsMovie = () => {
             className=""
           />
           <div className="judul">
-            <h1 className="pb-3">{movie?.original_title}</h1>
+            <h1 className="pb-3">{movie?.title}</h1>
             <p className="pb-2">{action.join(", ")}</p>
             <p className="pb-2">{movie?.overview}</p>
             <p>⭐{movie?.vote_average}/10</p>
