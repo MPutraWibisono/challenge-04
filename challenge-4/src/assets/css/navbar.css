@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../font/BebasNeue.otf") format("opentype");
+}
+
+.navbar .container-fluid .navbar-brand {
+  font-family: "Bebas Neue", sans-serif;
+  color: red;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.navbar .container-fluid form input {
+  color: #757575;
+  /* mix-blend-mode: difference; */
+}
+
+.navbar .container-fluid form .form-control::placeholder {
+  color: rgb(190, 189, 189);
+  /* mix-blend-mode: difference; */
+}
+
+.navbar .container-fluid form .form-control:focus,
+.navbar .container-fluid form .btn:focus {
+  box-shadow: none;
+}
+
+.disabled-link {
+  pointer-events: none;
+}

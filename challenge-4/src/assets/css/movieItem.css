@@ -1,0 +1,14 @@
+.card:hover {
+  .card-body {
+    display: block;
+  }
+  .card-img-top {
+    filter: brightness(30%);
+  }
+}
+.card-body {
+  position: absolute;
+  max-width: 100%;
+  top: 25%;
+  display: none;
+}

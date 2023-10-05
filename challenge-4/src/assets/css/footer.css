@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../font/BebasNeue.otf") format("opentype");
+}
+
+.brands {
+  font-family: "Bebas Neue", sans-serif;
+  color: red;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}

@@ -1,0 +1,27 @@
+.owl-dots {
+  position: absolute;
+  z-index: 2;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 0%;
+}
+
+.judul {
+  position: absolute;
+  left: 3%;
+  top: 30%;
+}
+
+.judul h1 {
+  max-width: 50%;
+  color: aliceblue;
+  font-size: 3rem;
+  font-weight: 700;
+  mix-blend-mode: difference;
+}
+
+.judul p {
+  max-width: 50%;
+  color: aliceblue;
+  mix-blend-mode: difference;
+}
