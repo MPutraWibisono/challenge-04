@@ -1,43 +1,9 @@
 /* eslint-disable react/prop-types */
 import OwlCarousel from "react-owl-carousel";
 import "../assets/css/hero.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import WatchTrailer from "./WatchTrailer";
-// import ReactPlayer from "react-player";
 
-const Hero = () => {
-  const [rated, setRated] = useState([]);
-
-  useEffect(() => {
-    const getRatedMovies = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/3/account/${
-            import.meta.env.VITE_API_MY_ID
-          }/favorite/movies?language=en-US&page=1&sort_by=created_at.asc`,
-          {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
-            },
-          }
-        );
-        const { data } = response;
-        // console.log(data?.results);
-        setRated(data?.results);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          alert(error?.response?.data?.status_message);
-          return;
-        }
-        alert(error?.message);
-      }
-    };
-    getRatedMovies();
-  }, []);
-  // if (rated.length === 0) {
-  //   return <h1>Loading...</h1>;
-  // }
+const Hero = ({ rated }) => {
   return (
     <>
       <OwlCarousel

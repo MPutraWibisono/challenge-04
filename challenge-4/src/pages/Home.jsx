@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Row, Col } from "react-bootstrap";
 import Hero from "../components/Hero";
@@ -8,6 +9,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
+  const [rated, setRated] = useState([]);
   const [show, setShow] = useState(false);
   const [errors, setErrors] = useState({
     isError: false,
@@ -15,6 +17,30 @@ const Home = () => {
   });
 
   useEffect(() => {
+    const getRatedMovies = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/3/account/${
+            import.meta.env.VITE_API_MY_ID
+          }/favorite/movies?language=en-US&page=1&sort_by=created_at.asc`,
+          {
+            headers: {
+              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+            },
+          }
+        );
+        const { data } = response;
+        setRated(data?.results);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          alert(error?.response?.data?.status_message);
+          return;
+        }
+        alert(error?.message);
+      }
+    };
+    getRatedMovies();
+
     const getPopularMovies = async () => {
       try {
         const response = await axios.get(
@@ -28,8 +54,7 @@ const Home = () => {
           }
         );
         const { data } = response;
-
-        setPopularMovies(data?.results);
+        setPopularMovies(data.results);
         setErrors({ ...errors, isError: false });
       } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -40,7 +65,6 @@ const Home = () => {
           });
           return;
         }
-
         alert(error?.message);
         setErrors({
           ...errors,
@@ -51,7 +75,7 @@ const Home = () => {
     };
 
     getPopularMovies();
-  }, []); //errors dependency
+  }, []);
 
   if (errors.isError) {
     return <h1>{errors.message}</h1>;
@@ -73,7 +97,7 @@ const Home = () => {
 
   return (
     <>
-      <Hero />
+      <Hero rated={rated} />
       <Container fluid>
         <Row className="py-3 mt-4">
           <Col>

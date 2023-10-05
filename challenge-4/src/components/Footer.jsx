@@ -28,7 +28,6 @@ const Footer = () => {
   if (footer) {
     // Memeriksa apakah elemen <footer> ditemukan
     window.addEventListener("scroll", function () {
-      console.log(window.scrollY);
       if (window.scrollY > 10) {
         footer.classList.remove("d-none");
       } else {

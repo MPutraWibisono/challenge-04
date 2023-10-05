@@ -5,15 +5,11 @@ import Navbar from "./components/Navbars";
 import Footer from "./components/Footer";
 import SearchMovies from "./pages/SearchMovie";
 import { DetailsMovie } from "./pages/DetailsMovie";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
 // import { useState } from "react";
 
 const App = () => {
-  // const [searchQuery, setsearchQuery] = useState("");
-
-  // const handleSearch = (cari) => {
-  //   setsearchQuery(cari);
-  // };
-
   return (
     <>
       <BrowserRouter>
