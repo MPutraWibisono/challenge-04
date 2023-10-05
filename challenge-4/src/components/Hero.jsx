@@ -18,7 +18,7 @@ const Hero = ({ rated }) => {
         {rated.map((movie) => (
           <div key={movie?.id} className="items">
             <img
-              src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
               alt={movie?.original_title}
               className=""
             />
