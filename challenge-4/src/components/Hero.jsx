@@ -44,9 +44,10 @@ const Hero = () => {
     };
     getRatedMovies();
   }, []);
-  // if (rated.length === 0) {
-  //   return <h1>Loading...</h1>;
-  // }
+
+  if (rated.length === 0) {
+    return <h1 className="text-center mt-5 pt-5">Hero</h1>;
+  }
   return (
     <>
       <OwlCarousel
