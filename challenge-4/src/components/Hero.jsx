@@ -1,9 +1,52 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import OwlCarousel from "react-owl-carousel";
 import "../assets/css/hero.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import WatchTrailer from "./WatchTrailer";
 
-const Hero = ({ rated }) => {
+const Hero = () => {
+  const [rated, setRated] = useState([]);
+  const [errors, setErrors] = useState({
+    isError: false,
+    message: null,
+  });
+
+  useEffect(() => {
+    const getRatedMovies = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/3/account/${
+            import.meta.env.VITE_API_MY_ID
+          }/favorite/movies?language=en-US&page=1&sort_by=created_at.asc`,
+          {
+            headers: {
+              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+            },
+          }
+        );
+        const { data } = response;
+        // console.log(data?.results);
+        setRated(data?.results);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          alert(error?.response?.data?.status_message);
+          return;
+        }
+        alert(error?.message);
+        setErrors({
+          ...errors,
+          isError: true,
+          message: error?.message,
+        });
+      }
+    };
+    getRatedMovies();
+  }, []);
+  // if (rated.length === 0) {
+  //   return <h1>Loading...</h1>;
+  // }
   return (
     <>
       <OwlCarousel
@@ -18,7 +61,7 @@ const Hero = ({ rated }) => {
         {rated.map((movie) => (
           <div key={movie?.id} className="items">
             <img
-              src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
               alt={movie?.original_title}
               className=""
             />
